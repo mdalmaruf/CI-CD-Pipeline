@@ -159,9 +159,13 @@ jobs:
       run: |
         python -m unittest discover
 ```
-
+## Step 5: Commit and Push Changes
 ```bash
 git add .github/workflows/ci.yml test_app.py requirements.txt CI_CD_Pipeline.md
 git commit -m "Add CI/CD pipeline with GitHub Actions and test cases"
 git push origin main
 ```
+
+## Verify the Workflow:
+
+After pushing the changes, go to your GitHub repository and navigate to the "Actions" tab. You should see the workflow running. If everything is set up correctly, the workflow will run and show the status of your tests
