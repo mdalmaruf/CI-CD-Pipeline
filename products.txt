@@ -1,0 +1,4 @@
+1,Product A,10.99,Type 1,https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f
+2,Product B,15.49,Type 2,https://images.unsplash.com/photo-1567306226416-28f0efdc88ce
+3,Product C,8.99,Type 3,https://loremflickr.com/cache/resized/65535_51774384039_624f926674_q_150_150_nofilter.jpg
+4,Apple,10.00,Type 4,https://loremflickr.com/cache/resized/65535_53037497411_43e5d0f778_q_150_150_nofilter.jpg
