@@ -103,3 +103,65 @@ After pushing the changes, go to your GitHub repository and navigate to the "Act
 
 ## Conclusion
 By setting up this CI/CD pipeline and adding test cases, we ensure that our code is automatically tested on every push and pull request and deployed to Google Cloud. This helps us catch issues early and maintain a high-quality codebase.
+
+
+# Without GCP integration at Github Worklow
+
+## Step 1: Create the Test Cases
+Create a file named `test_app.py` in your project directory and add the following content:
+
+```python
+import unittest
+from OnlineShopping import app
+
+class BasicTests(unittest.TestCase):
+
+    def setUp(self):
+        self.app = app.test_client()
+        self.app.testing = True
+
+    def test_home_page(self):
+        result = self.app.get('/')
+        self.assertEqual(result.status_code, 200)
+
+if __name__ == "__main__":
+    unittest.main()
+```
+### Step 1: Create the Workflow File without GCP
+
+First, create a directory named `.github/workflows` in the root of your project. Inside this directory, create a file named `ci.yml`. This file will define our CI/CD workflow.
+
+```yaml
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Run tests
+      run: |
+        python -m unittest discover
+```
+
+```bash
+git add .github/workflows/ci.yml test_app.py requirements.txt CI_CD_Pipeline.md
+git commit -m "Add CI/CD pipeline with GitHub Actions and test cases"
+git push origin main
+```
