@@ -59,3 +59,47 @@ jobs:
 
     - name: Deploy to Google App Engine
       run: gcloud app deploy --quiet
+```
+## Step 2: Create the Test Cases
+Create a file named `test_app.py` in your project directory and add the following content:
+
+```python
+import unittest
+from OnlineShopping import app
+
+class BasicTests(unittest.TestCase):
+
+    def setUp(self):
+        self.app = app.test_client()
+        self.app.testing = True
+
+    def test_home_page(self):
+        result = self.app.get('/')
+        self.assertEqual(result.status_code, 200)
+
+if __name__ == "__main__":
+    unittest.main()
+```
+
+## Step 3: Ensure Dependencies are Listed
+Make sure you have a `requirements.txt` file in your project directory listing all dependencies, including `pytest`.
+
+```plaintext
+Flask
+pytest
+gunicorn
+```
+## Step 5: Commit and Push Changes
+Commit the new workflow file, test cases, and `requirements.txt` to your repository and push the changes.
+
+```bash
+git add .github/workflows/ci.yml test_app.py requirements.txt CI_CD_Pipeline.md app.yaml
+git commit -m "Add CI/CD pipeline with GitHub Actions and test cases"
+git push origin main
+```
+
+## Step 6: Verify the Workflow
+After pushing the changes, go to your GitHub repository and navigate to the "Actions" tab. You should see the workflow running. If everything is set up correctly, the workflow will run and show the status of your tests, and then deploy the application to Google Cloud.
+
+## Conclusion
+By setting up this CI/CD pipeline and adding test cases, we ensure that our code is automatically tested on every push and pull request and deployed to Google Cloud. This helps us catch issues early and maintain a high-quality codebase.
