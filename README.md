@@ -169,3 +169,5 @@ git push origin main
 ## Verify the Workflow:
 
 After pushing the changes, go to your GitHub repository and navigate to the "Actions" tab. You should see the workflow running. If everything is set up correctly, the workflow will run and show the status of your tests
+
+![CI/CD Pipeline](/CI_CD.JPG)
