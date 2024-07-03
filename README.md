@@ -107,7 +107,7 @@ By setting up this CI/CD pipeline and adding test cases, we ensure that our code
 
 # Without GCP integration at Github Worklow
 
-## Step 1: Create the Test Cases
+## Step: Create the Test Cases
 Create a file named `test_app.py` in your project directory and add the following content:
 
 ```python
@@ -127,7 +127,7 @@ class BasicTests(unittest.TestCase):
 if __name__ == "__main__":
     unittest.main()
 ```
-### Step 1: Create the Workflow File without GCP
+### Step: Create the Workflow File without GCP
 
 First, create a directory named `.github/workflows` in the root of your project. Inside this directory, create a file named `ci.yml`. This file will define our CI/CD workflow.
 
@@ -159,7 +159,7 @@ jobs:
       run: |
         python -m unittest discover
 ```
-## Step 5: Commit and Push Changes
+## Step: Commit and Push Changes
 ```bash
 git add .github/workflows/ci.yml test_app.py requirements.txt CI_CD_Pipeline.md
 git commit -m "Add CI/CD pipeline with GitHub Actions and test cases"
